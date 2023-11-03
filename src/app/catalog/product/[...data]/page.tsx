@@ -1,4 +1,4 @@
-"use client";
+import { AddToCartButton } from "./add-to-cart-button";
 
 interface ProductProps {
   params: {
@@ -9,19 +9,13 @@ interface ProductProps {
 export default function Product({ params }: ProductProps) {
   const [productId, size, color] = params.data;
 
-  function addToCart() {
-    console.log("adicionando ao carrinho");
-  }
-
   return (
     <div>
       <p>Product {productId}</p>
       <p>size {size}</p>
       <p>color {color}</p>
 
-      <button type="button" onClick={addToCart}>
-        Adicionar ao carrinho
-      </button>
+      <AddToCartButton />
     </div>
   );
 }
