@@ -30,3 +30,41 @@
   - Streaming SSR => Ler/escrever dados de forma parcial + Server Side Render
 
     - Renderizar um component do lado do servidor de forma parcial. ex: busca de dados em componentes asíncronos
+
+- Client boundaries & encadeamento
+
+> todo retorno de um `use client` é tratado como client component, não precisando adicionar mais a diretiva no component retornando.
+
+```tsx
+"use client";
+
+return (
+  <div>
+    <h1>elias alexandre</h1>
+    <Article /> // "use client"
+  </div>
+);
+
+return <Article>Novo artigo</Article>;
+```
+
+para um **server component** ser usado em um `client component`, tem que ser recebido nas **props**
+
+```tsx
+"use client";
+
+export async function App({ children }: { children: React.ReactNode }) {
+  return (
+    <div>
+      <h1>elias alexandre</h1>
+      {children} // "can be server component"
+    </div>
+  );
+}
+
+export async function Test() {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
+  return <Article>Novo artigo</Article>;
+}
+```
