@@ -1,8 +1,27 @@
-export default async function HomePage() {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+import { Suspense } from "react";
 
-  const response = await fetch("https://api.github.com/users/eliasalexandre");
-  const user = await response.json();
+import { GithubProfile } from "@/components/github-profile";
+import { LongWaitComponent } from "@/components/long-wait-component";
 
-  return <pre>{JSON.stringify(user, null, 2)}</pre>;
+export default function HomePage() {
+  return (
+    <div>
+      <h1>Home</h1>
+
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse error
+        praesentium ducimus culpa quia consequuntur aliquid, molestias enim
+        voluptate inventore nihil veritatis odit aliquam quas ipsa! Animi vel
+        quasi voluptate?
+      </p>
+
+      <Suspense fallback={<p>Loading LongWaitComponent</p>}>
+        <LongWaitComponent />
+      </Suspense>
+
+      <Suspense fallback={<p>Loading GithubProfile</p>}>
+        <GithubProfile />
+      </Suspense>
+    </div>
+  );
 }

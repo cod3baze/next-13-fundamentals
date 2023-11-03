@@ -68,3 +68,19 @@ export async function Test() {
   return <Article>Novo artigo</Article>;
 }
 ```
+
+- Suspense API
+
+  - por padrão o next aguarda todo o carregamento dos **Client components**, depois exibe o conteúdo estático da **SSR** junto.
+
+    - a forma de evitar esse comportamento é usando a **<Suspense />** component
+
+    ```tsx
+    <Suspense fallback={<p>Loading LongWaitComponent</p>}>
+        <LongWaitComponent />
+      </Suspense>
+
+      <Suspense fallback={<p>Loading GithubProfile</p>}>
+        <GithubProfile />
+      </Suspense>
+    ```
