@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { api } from "@/data/api";
 import { Product } from "@/data/types/product";
+import AddToCartButton from "@/components/add-to-cart-button";
 
 async function getProduct(slug: string): Promise<Product> {
   const response = await api(`/products/${slug}`, {
@@ -116,12 +117,7 @@ export default async function ProductDetails({ params }: ProductDetailsProps) {
           </div>
         </div>
 
-        <button
-          type="button"
-          className="mt-8 px-4 flex h-12 items-center justify-center rounded-full bg-emerald-600 font-semibold text-white"
-        >
-          Adicionar ao carrinho
-        </button>
+        <AddToCartButton productId={product.id} />
       </div>
     </div>
   );
