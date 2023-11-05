@@ -88,3 +88,15 @@ export async function Test() {
 ## API Route
 
 - Cada arquivo `route.ts` que estiver na paste **api** automaticamente vira _route handler_
+
+- Cache & Memoization: evitar calculos duplicados de forma desnecessario
+
+- Next Cache
+
+  - armazenar as informações de requisições passada, e reutilizar em outro cenário
+
+  - **"force-cache"**: a requisição vai ser feita apenas 1 vez, e cacheada de tempo indeterminado.
+
+  - **"no-store"**: a requisição vai ser feita do total zero.
+
+  - **"next: {revalidate: 10}"**: a requisição vai ser cacheado por 10 segundos.
