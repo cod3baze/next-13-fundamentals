@@ -84,3 +84,7 @@ export async function Test() {
         <GithubProfile />
       </Suspense>
     ```
+
+## API Route
+
+- Cada arquivo `route.ts` que estiver na paste **api** automaticamente vira _route handler_
