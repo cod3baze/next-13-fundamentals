@@ -30,6 +30,21 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  const response = await api("/products/featured");
+  const products: Product[] = await response.json();
+
+  // return [
+  //   {
+  //     slug: "moletom-ai-side",
+  //   },
+  // ];
+
+  return products.map((product) => ({
+    slug: product.slug,
+  }));
+}
+
 export default async function ProductDetails({ params }: ProductDetailsProps) {
   const product = await getProduct(params.slug);
 
